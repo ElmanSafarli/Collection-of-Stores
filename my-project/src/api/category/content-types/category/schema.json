@@ -31,6 +31,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "subcaregories": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::subcaregory.subcaregory",
+      "mappedBy": "category"
     }
   }
 }

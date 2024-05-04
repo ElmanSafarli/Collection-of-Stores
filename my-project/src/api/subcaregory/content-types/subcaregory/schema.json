@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "subcaregories",
+  "info": {
+    "singularName": "subcaregory",
+    "pluralName": "subcaregories",
+    "displayName": "Subcaregory",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Name"
+    },
+    "category": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::category.category",
+      "inversedBy": "subcaregories"
+    },
+    "stores": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::store.store",
+      "mappedBy": "subcaregory"
+    }
+  }
+}

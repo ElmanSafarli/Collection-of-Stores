@@ -20,12 +20,13 @@ const FilterStores = () => {
     const [stores, setStores] = useState([]);
     const [storesImg, setStoresImg] = useState([]);
     const [storesCountry, setStoresCountry] = useState([]);
+    const [subcategory, setSubcategory] = useState([]);
 
     const server = 'http://localhost:1337'
 
     useEffect(() => {
         axios
-            .get(`${server}/api/categories?populate[stores][populate]=*&filters[Slug]=${slug}`)
+            .get(`${server}/api/categories?populate[stores][populate]=*&populate[subcaregories][populate]=*&filters[Slug]=${slug}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setStores(data.data[0].attributes.stores.data);
@@ -50,18 +51,30 @@ const FilterStores = () => {
                     });
                     setStoresImg(imageUrls);
 
+                    setSubcategory(data.data[0].attributes.subcaregories.data);
+
                 } else {
                     setError("No data found for this slug.");
                     console.log(error);
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, error]);
 
+
+    }, [slug, error]);
 
     return (
         <section>
             <Navbar />
+            <div className="subcategories">
+                {subcategory.map(({ id, attributes }) => (
+                    <div className="" key={id}>
+                        <Link to={`/subcategory/${attributes.Slug}`}>
+                            {attributes.Name}
+                        </Link>
+                    </div>
+                ))}
+            </div>
             <div className="filter-all-products">
                 {stores && stores.length > 0 ? (
                     stores

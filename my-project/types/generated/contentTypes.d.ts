@@ -808,6 +808,11 @@ export interface ApiCategoryCategory extends Schema.CollectionType {
     >;
     Slug: Attribute.UID<'api::category.category', 'Name'>;
     Image: Attribute.Media;
+    subcaregories: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::subcaregory.subcaregory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -949,6 +954,11 @@ export interface ApiStoreStore extends Schema.CollectionType {
       'api::country.country'
     >;
     BrandLogo: Attribute.Media;
+    subcaregory: Attribute.Relation<
+      'api::store.store',
+      'manyToOne',
+      'api::subcaregory.subcaregory'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -960,6 +970,48 @@ export interface ApiStoreStore extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::store.store',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSubcaregorySubcaregory extends Schema.CollectionType {
+  collectionName: 'subcaregories';
+  info: {
+    singularName: 'subcaregory';
+    pluralName: 'subcaregories';
+    displayName: 'Subcaregory';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    Slug: Attribute.UID<'api::subcaregory.subcaregory', 'Name'>;
+    category: Attribute.Relation<
+      'api::subcaregory.subcaregory',
+      'manyToOne',
+      'api::category.category'
+    >;
+    stores: Attribute.Relation<
+      'api::subcaregory.subcaregory',
+      'oneToMany',
+      'api::store.store'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::subcaregory.subcaregory',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::subcaregory.subcaregory',
       'oneToOne',
       'admin::user'
     > &
@@ -989,6 +1041,7 @@ declare module '@strapi/types' {
       'api::country.country': ApiCountryCountry;
       'api::product.product': ApiProductProduct;
       'api::store.store': ApiStoreStore;
+      'api::subcaregory.subcaregory': ApiSubcaregorySubcaregory;
     }
   }
 }

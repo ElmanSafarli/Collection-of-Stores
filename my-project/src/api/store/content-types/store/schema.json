@@ -123,6 +123,12 @@
       ],
       "type": "media",
       "multiple": false
+    },
+    "subcaregory": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::subcaregory.subcaregory",
+      "inversedBy": "stores"
     }
   }
 }
