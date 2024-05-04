@@ -25,6 +25,8 @@ const StoreDetail = () => {
     const [image3, setImage3] = useState('');
     const [image4, setImage4] = useState('');
 
+    const [dataFetched, setDataFetched] = useState(false);
+
     // State to manage the main image URL
     const [mainImage, setMainImage] = useState(server + image1);
 
@@ -37,7 +39,15 @@ const StoreDetail = () => {
         setMainImage(server + image1);
     }, [image1, server]);
 
-    useEffect(() => {
+    const debounce = (func, delay) => {
+        let timer;
+        return function (...args) {
+            clearTimeout(timer);
+            timer = setTimeout(() => func(...args), delay);
+        };
+    };
+
+    const fetchData = debounce(() => {
         axios
             .get(`${server}/api/stores/?populate=*&filters[Slug]=${slug}`)
             .then(({ data }) => {
@@ -66,6 +76,8 @@ const StoreDetail = () => {
 
                     // Set mainImage initially to Image1 URL
                     setMainImage(attributes.Image1.data.attributes.url);
+
+                    setDataFetched(true);
 
                 } else {
                     setError("No data found for this slug.");
@@ -97,8 +109,12 @@ const StoreDetail = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, error]);
 
+    }, 500);
+
+    useEffect(() => {
+        fetchData();
+    }, [slug]);
 
     return (
         <section>

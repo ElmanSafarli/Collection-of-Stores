@@ -55,32 +55,37 @@ const FilterCountryStores = () => {
             <Navbar />
             <div className="filter-all-products">
                 {stores && stores.length > 0 ? (
-                    stores.map(({ id, attributes }, index) => (
-                        <div className="stores-box" key={id}>
-                            <div className="logo"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Logo_NIKE.svg/1200px-Logo_NIKE.svg.png" alt="Store Logo" /></div>
-                            <div
-                                className="store-slider"
-                                style={{
-                                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${server + storesImg[index]}')`,
-                                }}
-                            >
-                            </div>
-                            <div className="store-info">
-                                <div className="content">
-                                    <div className="top">
-                                        <div className="">
-                                            <div className="title">{attributes.Name}</div>
-                                            <div className="country">{storesCountry}</div>
-                                        </div>
-                                        <div className="link">
-                                            <Link to={`/store/${attributes.Slug}`}><img src={link} alt="link" /></Link>
+                    stores
+                        .map(({ id, attributes }, index) => {
+                            const storeLogo = attributes.BrandLogo && attributes.BrandLogo.data ? attributes.BrandLogo.data.attributes.url : '';
+                            return (
+                                <div className="stores-box" key={id}>
+                                    <div className="logo"><img src={server + storeLogo} alt="Store Logo" /></div>
+                                    <div
+                                        className="store-slider"
+                                        style={{
+                                            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('${server + storesImg[index]}')`,
+                                        }}
+                                    >
+                                    </div>
+                                    <div className="store-info">
+                                        <div className="content">
+                                            <div className="top">
+                                                <div className="">
+                                                    <div className="title">{attributes.Name}</div>
+                                                    <div className="country">{storesCountry}</div>
+                                                </div>
+                                                <div className="link">
+                                                    <Link to={`/store/${attributes.Slug}`}><img src={link} alt="link" /></Link>
+                                                </div>
+                                            </div>
+                                            <div className="text">{attributes.Text1}</div>
                                         </div>
                                     </div>
-                                    <div className="text">{attributes.Text1}</div>
                                 </div>
-                            </div>
-                        </div>
-                    ))
+                            );
+
+                        })
                 ) : (
                     <p>No data available.</p>
                 )}

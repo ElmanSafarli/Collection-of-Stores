@@ -977,6 +977,16 @@ ul {
     margin-right: 14px;
   }
 
+  /* Featured */
+  .stores-box-group {
+    display: block;
+  }
+
+  .stores-box {
+    margin-bottom: 14px;
+    height: 356px;
+  }
+
   /* Contact Us */
   .contactUs-map {
     width: 410px;
@@ -1153,6 +1163,44 @@ ul {
     margin-bottom: 14px;
   }
 
+  /* Featured */
+  .stores-box {
+    overflow: inherit;
+    display: block;
+    height: 428px;
+    border-radius: 20px;
+  }
+
+  .store-slider {
+    height: 258px;
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  .store-info .content .link img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .store-info .top .title {
+    font-size: 24px;
+  }
+
+  .store-info {
+    height: 48%;
+    width: 100%;
+    border-radius: 20px;
+    bottom: 0;
+  }
+
+  .store-info .text {
+    font-size: 10px;
+  }
+
+  .store-info .top {
+    margin-bottom: 20px;
+  }
+
   /* Contact us */
   .contactUs-info-item {
     display: block;
@@ -1166,6 +1214,75 @@ ul {
   .contactUs-info-item-icon {
     margin: 0 auto;
   }
+
+  /* Detail Page */
+  .detailPage-top {
+    display: block;
+  }
+
+  .detailPage-top-l {
+    display: block;
+    margin-bottom: 40px;
+    height: 328px;
+    position: relative;
+  }
+
+  .detailPage-top-r {
+    margin-left: 0;
+  }
+
+  .img-group {
+    position: absolute;
+    flex-direction: row;
+    height: auto;
+    width: 100%;
+    bottom: 0;
+  }
+
+  .img-group button {
+    border-radius: 4px;
+    width: 70px;
+    height: 74px;
+  }
+
+  .img-main {
+    margin-left: 0;
+    width: 100%;
+    height: 240px;
+  }
+
+  .description .text {
+    font-size: 14px;
+  }
+
+
+  .products-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .product .image {
+    height: 190px;
+    margin-bottom: 12px;
+  }
+
+  .product .image img {
+    height: 100px;
+  }
+
+  .product .name {
+    font-size: 16px;
+    margin-bottom: 2px;
+  }
+
+  .product .price {
+    font-size: 16px;
+  }
+
+  /* Filter All products */
+  .filter-all-products {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
 
   /* Footer */
   .footer-r {
