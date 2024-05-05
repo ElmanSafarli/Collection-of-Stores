@@ -28,6 +28,12 @@ ul {
   display: block !important;
 }
 
+.inline {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+}
+
 /* Navbar */
 .nav-top {
   display: flex;
@@ -953,13 +959,66 @@ ul {
   grid-template-rows: 1fr;
   grid-column-gap: 10px;
   grid-row-gap: 10px;
+  margin-right: 2%;
+  margin-top: 2%;
+  width: 100%;
+}
+
+.filter-all-products .stores-box .store-info {
+  width: 283px;
+}
+
+.filter-all-products .store-info .text {
+  font-size: 11px;
+}
+
+/* Subcategory */
+.subcategories {
+  background-color: var(--dark-color);
+  width: 200px;
+  padding: 48px 40px;
+  height: auto;
+  border-radius: 10px;
   margin: 2%;
 }
 
+.subcategories .hr {
+  height: 4px;
+  border-radius: 20px;
+  width: 100%;
+  margin: 20px 0;
+  background-color: #cecece;
+}
 
+.subcategories .title {
+  font-weight: 500;
+  color: #fff;
+  font-size: 24px;
+}
 
+.subcategory-item {
+  margin-bottom: 8px;
+}
 
+.subcategory-item a {
+  color: #fff;
+}
 
+.subcategories-mobile button {
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 14px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: #2e2f34;
+  border-radius: 8px;
+  width: 100%;
+  height: 50px;
+}
 
 
 @media (max-width: 1000px) {
@@ -991,6 +1050,51 @@ ul {
   .contactUs-map {
     width: 410px;
     height: 350px;
+  }
+}
+
+@media (max-width: 1100px) {
+
+  /* Featured */
+  .stores-box {
+    overflow: inherit;
+    display: block;
+    height: 428px;
+    border-radius: 20px;
+  }
+
+  .store-slider {
+    height: 258px;
+    border-radius: 20px;
+    width: 100%;
+  }
+
+  .store-info .content .link img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .store-info .top .title {
+    font-size: 24px;
+  }
+
+  .store-info {
+    height: 48%;
+    width: 100%;
+    border-radius: 20px;
+    bottom: 0;
+  }
+
+  .store-info .text {
+    font-size: 10px;
+  }
+
+  .store-info .top {
+    margin-bottom: 20px;
+  }
+
+  .filter-all-products .stores-box .store-info {
+    width: 100%;
   }
 }
 
@@ -1046,6 +1150,15 @@ ul {
     width: 70%;
   }
 
+  .header-filter-content ul {
+    margin-top: 86px;
+  }
+
+  #filterHeaderClose {
+    margin-top: 0;
+    margin-right: 0;
+  }
+
   /* Header */
   .header-slider .content {
     width: 90%;
@@ -1079,6 +1192,10 @@ ul {
     height: 282px;
   }
 
+  /* Filtered */
+  .filter-all-products {
+    grid-template-columns: repeat(1, 1fr);
+  }
 
   /* Conatct us */
   .contactUs-info {
@@ -1199,6 +1316,15 @@ ul {
 
   .store-info .top {
     margin-bottom: 20px;
+  }
+
+  /* Subcategories */
+  .inline {
+    display: block;
+  }
+
+  .subcategories {
+    display: none;
   }
 
   /* Contact us */

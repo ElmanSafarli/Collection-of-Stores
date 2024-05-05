@@ -27,6 +27,13 @@ const FeaturedStores = () => {
             .catch((error) => setError(error));
     }, [error]);
 
+    const truncateText = (text, limit) => {
+        if (text.length > limit) {
+            return text.substring(0, limit) + '...';
+        }
+        return text;
+    };
+
     return (
         <section>
             <div className="featuredHome">
@@ -40,6 +47,8 @@ const FeaturedStores = () => {
                             .map(({ id, attributes }) => {
                                 const firstImage = attributes.Image1.data.attributes.url;
                                 const storeLogo = attributes.BrandLogo.data.attributes.url;
+                                const country = attributes.country && attributes.country.data ? attributes.country.data.attributes.Name : '';
+
                                 return (
                                     <div className="stores-box" key={id}>
                                         <div className="logo"><img src={server + storeLogo} alt="Store Logo" /></div>
@@ -56,13 +65,13 @@ const FeaturedStores = () => {
                                                 <div className="top">
                                                     <div className="">
                                                         <div className="title">{attributes.Name}</div>
-                                                        <div className="country">{attributes.Featured}</div>
+                                                        <div className="country">{country}</div>
                                                     </div>
                                                     <div className="link">
                                                         <a href={`/store/${attributes.Slug}`}><img src={link} alt="link" /></a>
                                                     </div>
                                                 </div>
-                                                <div className="text">{attributes.Text1}</div>
+                                                <div className="text">{truncateText(attributes.Text1, 140)}</div>
                                             </div>
                                         </div>
                                     </div>
