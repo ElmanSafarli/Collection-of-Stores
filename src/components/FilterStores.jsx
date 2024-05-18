@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
 
+import { useTranslation } from 'react-i18next';
+
 import axios from "axios";
 
 import { Link } from "react-router-dom"
@@ -16,6 +18,8 @@ const FilterStores = () => {
 
     const { slug } = useParams();
 
+    const { i18n } = useTranslation();
+
     const [error, setError] = useState(null);
     const [stores, setStores] = useState([]);
     const [subcategory, setSubcategory] = useState([]);
@@ -24,9 +28,16 @@ const FilterStores = () => {
 
     const server = 'http://localhost:1337'
 
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
+
     useEffect(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/categories?populate[stores][populate]=*&populate[subcaregories][populate]=*&filters[Slug]=${slug}`)
+            .get(`${server}/api/categories?populate[stores][populate]=*&populate[subcaregories][populate]=*&filters[Slug]=${slug}&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setStores(data.data[0].attributes.stores.data);
@@ -40,7 +51,7 @@ const FilterStores = () => {
             .catch((error) => setError(error));
 
 
-    }, [slug, error]);
+    }, [slug, error, i18n.language]);
 
     const truncateText = (text, limit) => {
         if (text.length > limit) {

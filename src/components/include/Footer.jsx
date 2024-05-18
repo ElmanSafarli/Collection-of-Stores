@@ -1,28 +1,31 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+
 
 const Footer = () => {
+    const { t } = useTranslation();
     return (
         <footer>
             <div className="footer-content">
                 <div className="footer-top">
                     <div className="footer-l">
                         <img src="" alt="logo" />
-                        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt </p>
+                        <p>{t('footer.item_1')}</p>
                     </div>
                     <div className="footer-r">
                         <div className="item">
-                            <div className="title">Useful links</div>
+                            <div className="title"><p>{t('footer.item_2')}</p></div>
                             <ul>
-                                <li><a href="/">About us</a></li>
-                                <li><a href="/">Contact us</a></li>
-                                <li><a href="/">Categories</a></li>
+                                <li><a href="/"><p>{t('footer.item_3')}</p></a></li>
+                                <li><a href="/"><p>{t('footer.item_4')}</p></a></li>
+                                <li><a href="/"><p>{t('footer.item_5')}</p></a></li>
                             </ul>
                         </div>
                         <div className="item">
-                            <div className="title">Contact Information</div>
+                            <div className="title"><p>{t('footer.item_6')}</p></div>
                             <ul>
-                                <li>América, Amerigo, Emery,<br /> Aimery, Amaris</li>
-                                <li>+999 77 777 77 77</li>
+                                <li><p>{t('footer.item_7')}</p></li>
+                                <li><p>{t('footer.item_8')}</p></li>
                             </ul>
                         </div>
                     </div>

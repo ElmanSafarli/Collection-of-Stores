@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import axios from "axios";
 
@@ -13,19 +14,28 @@ const AllCategories = () => {
 
     const { slug } = useParams();
 
+    const { i18n } = useTranslation();
+
+
     const [error, setError] = useState(null);
     const [categories, setCategories] = useState([]);
     const [categoriesImg, setCategoriesImg] = useState([]);
 
     const server = 'http://localhost:1337'
 
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
+
     useEffect(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/categories/?populate=*`)
+            .get(`${server}/api/categories/?populate=*&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setCategories(data.data);
-                    // setFlagImage(flaflags[0].attributes.Flag.data.attributes.url);
                     const images = {};
                     data.data.forEach(({ id, attributes }) => {
                         if (attributes.Image && attributes.Image.data && attributes.Image.data.attributes.url) {
@@ -35,10 +45,11 @@ const AllCategories = () => {
                     setCategoriesImg(images);
                 } else {
                     setError("No data found for this slug.");
+                    console.log(error)
                 }
             })
             .catch((error) => setError(error));
-    }, [slug]);
+    }, [slug, i18n.language, error]);
 
     return (
         <section>

@@ -2,13 +2,16 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 // Images
-import location from '../../assets/location.png'
-import support from '../../assets/support.png'
+import location from '../assets/location.png'
+import support from '../assets/support.png'
+import Navbar from './include/Navbar';
+import Footer from './include/Footer';
 
-const Contact = () => {
+const ContactPage = () => {
     const { t } = useTranslation();
     return (
         <section>
+            <Navbar />
             <div className="contactUs">
                 <div className="contactUs-content">
                     <div className="contactUs-title">{t('contact.item_1')}</div>
@@ -37,8 +40,9 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <Footer />
         </section>
     );
 };
 
-export default Contact;
+export default ContactPage;

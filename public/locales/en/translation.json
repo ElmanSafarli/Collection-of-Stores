@@ -1,0 +1,55 @@
+{
+    "navBar": {
+        "item_1": "Home",
+        "item_2": "Categories",
+        "item_3": "Contact Us"
+    },
+    "navBarBottom": {
+        "item_1": "Choose your country ",
+        "item_2": "Enter the name of the country you are looking for... "
+    },
+    "homeHeader": {
+        "item_1": "Lorem ipsum dolor sit amet",
+        "item_2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        "item_3": "See the store"
+    },
+    "homeCategories": {
+        "item_1": "Categories",
+        "item_2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt",
+        "item_3": "Health and Wellness",
+        "item_4": "Clothes",
+        "item_5": "Electronics",
+        "item_6": "Fashion",
+        "item_7": "Grocery"
+    },
+    "homeFeatures": {
+        "item_1": "Features Stores",
+        "item_2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt"
+    },
+    "subcategoryFeatures": {
+        "item_1": "Features Stores",
+        "item_2": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt"
+    },
+    "contact": {
+        "item_1": "Contact us",
+        "item_2": "Our address",
+        "item_3": "Lorem ipsum dolor sit amet, consectetur adipiscing elit,",
+        "item_4": "Contact information",
+        "item_5": "Mobile : +900 00 000 77 00",
+        "item_6": "Mail : info@example.com"
+    },
+    "footer": {
+        "item_1": "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt",
+        "item_2": "Useful links",
+        "item_3": "About us",
+        "item_4": "Contact us",
+        "item_5": "Categories",
+        "item_6": "Contact Information",
+        "item_7": "América, Amerigo, Emery, Aimery, Amaris",
+        "item_8": "+999 77 777 77 77"
+    },
+    "detailPage": {
+        "item_1": "Description",
+        "item_2": "Related Products"
+    }
+}

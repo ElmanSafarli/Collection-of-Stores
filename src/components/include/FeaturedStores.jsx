@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import axios from "axios";
 
@@ -9,12 +10,21 @@ const FeaturedStores = () => {
 
     const server = 'http://localhost:1337';
 
+    const { t, i18n } = useTranslation();
+
     const [error, setError] = useState(null);
     const [stores, setStores] = useState([]);
 
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
+
     useEffect(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/stores/?populate=*`)
+            .get(`${server}/api/stores/?populate=*&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     const attributes = data.data;
@@ -25,7 +35,7 @@ const FeaturedStores = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [error]);
+    }, [error, i18n.language]);
 
     const truncateText = (text, limit) => {
         if (text.length > limit) {
@@ -37,9 +47,9 @@ const FeaturedStores = () => {
     return (
         <section>
             <div className="featuredHome">
-                <div className="section-title">Features Stores</div>
+                <div className="section-title">{t('homeFeatures.item_1')}</div>
                 <div className="section-hr"></div>
-                <div className="section-text">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt </div>
+                <div className="section-text">{t('homeFeatures.item_2')}</div>
                 <div className="stores-box-group">
                     {stores && stores.length > 0 ? (
                         stores

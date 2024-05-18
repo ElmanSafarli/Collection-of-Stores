@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 import axios from "axios";
 
 // Companents
@@ -10,9 +11,9 @@ const StoreDetail = () => {
 
     const { slug } = useParams();
 
+    const { t, i18n } = useTranslation();
+
     const [error, setError] = useState(null);
-
-
 
     const server = 'http://localhost:1337';
 
@@ -46,10 +47,16 @@ const StoreDetail = () => {
             timer = setTimeout(() => func(...args), delay);
         };
     };
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
 
     const fetchData = debounce(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/stores/?populate=*&filters[Slug]=${slug}`)
+            .get(`${server}/api/stores/?populate=*&filters[Slug]=${slug}&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     const attributes = data.data[0].attributes;
@@ -63,7 +70,7 @@ const StoreDetail = () => {
             .catch((error) => setError(error));
 
         axios
-            .get(`${server}/api/stores/?populate=*&filters[Slug]=${slug}`)
+            .get(`${server}/api/stores/?populate=*&filters[Slug]=${slug}&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     const attributes = data.data[0].attributes;
@@ -86,7 +93,7 @@ const StoreDetail = () => {
             .catch((error) => setError(error));
 
         axios
-            .get(`${server}/api/stores/?populate[products][populate]=Image&filters[Slug]=${slug}`)
+            .get(`${server}/api/stores/?populate[products][populate]=Image&filters[Slug]=${slug}&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     const attributes = data.data[0].attributes;
@@ -114,7 +121,7 @@ const StoreDetail = () => {
 
     useEffect(() => {
         fetchData();
-    }, [slug]);
+    }, [slug, i18n.language]);
 
     return (
         <section>
@@ -148,7 +155,7 @@ const StoreDetail = () => {
                     </div>
                     <div className="description">
                         <div className="hr">
-                            <div className="name">Description</div>
+                            <div className="name">{t('detailPage.item_1')}</div>
                             <div className="line-1"></div>
                             <div className="line-2"></div>
                         </div>
@@ -156,7 +163,7 @@ const StoreDetail = () => {
                         <div className="text">{store.Text2}</div>
                     </div>
                     <div className="products">
-                        <div className="title">Related Products</div>
+                        <div className="title">{t('detailPage.item_2')}</div>
                         <div className="products-group">
                             {products && products.length > 0 ? (
                                 products.map(({ id, attributes }, index) => (

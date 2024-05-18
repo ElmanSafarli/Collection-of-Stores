@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom"
 
 import axios from "axios";
+import LanguageSwitcher from './LanguageSwitcher';
 
 const Navbar = () => {
     const { slug } = useParams();
+
+    const { t } = useTranslation();
+
 
     const [error, setError] = useState(null);
     const [country, setCountry] = useState([]);
@@ -23,10 +28,11 @@ const Navbar = () => {
 
                 } else {
                     setError("No data found for this slug.");
+                    console.log(error)
                 }
             })
             .catch((error) => setError(error));
-    }, [slug]);
+    }, [slug, error]);
 
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -41,12 +47,13 @@ const Navbar = () => {
                 <div className="nav-logo"><img src="" alt="logo" /></div>
                 <div className="nav-items">
                     <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/categories">Categories</a></li>
-                        <li><a href="/contact">Contact Us</a></li>
+                        <li><a href="/">{t('navBar.item_1')}</a></li>
+                        <li><a href="/categories">{t('navBar.item_2')}</a></li>
+                        <li><a href="/contact">{t('navBar.item_3')}</a></li>
                     </ul>
                 </div>
                 <div className="nav-top-r">
+                    <LanguageSwitcher />
                     <div className="nav-login">
                         <a href="/login">
                             <svg className="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
@@ -74,9 +81,9 @@ const Navbar = () => {
                             </div>
                             <div className="sidebar-items">
                                 <ul>
-                                    <li><a href="/">Home</a></li>
-                                    <li><a href="/categories">Categories</a></li>
-                                    <li><a href="/contact">Contact Us</a></li>
+                                    <li><a href="/">{t('navBar.item_1')}</a></li>
+                                    <li><a href="/categories">{t('navBar.item_2')}</a></li>
+                                    <li><a href="/contact">{t('navBar.item_3')}</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -98,7 +105,7 @@ const Navbar = () => {
                                 d="M22.3 13H1.7C0.761116 13 0 13.7611 0 14.7C0 15.6389 0.761117 16.4 1.7 16.4H22.3C23.2389 16.4 24 15.6389 24 14.7C24 13.7611 23.2389 13 22.3 13Z"
                                 fill="black" />
                         </svg>
-                        Choose your country
+                        {t('navBarBottom.item_1')}
                     </button>
                     <div className={`header-filter-content ${isFilterOpen ? 'open' : ''}`}>
                         <div className="header-filter-content-top">
@@ -125,7 +132,7 @@ const Navbar = () => {
                                     d="m21 21-3.5-3.5M17 10a7 7 0 1 1-14 0 7 7 0 0 1 14 0Z" />
                             </svg>
                         </button>
-                        <input type="text" placeholder="Enter the name of the country you are looking for..." />
+                        <input type="text" placeholder={t('navBarBottom.item_2')} />
                     </form>
                 </div>
             </div>

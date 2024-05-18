@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 import axios from "axios";
 
@@ -16,6 +17,8 @@ const AllStores = () => {
 
     const { slug } = useParams();
 
+    const { i18n } = useTranslation();
+
     const [error, setError] = useState(null);
     const [stores, setStores] = useState([]);
     const [storesImg, setStoresImg] = useState([]);
@@ -23,9 +26,16 @@ const AllStores = () => {
 
     const server = 'http://localhost:1337'
 
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
+
     useEffect(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/categories?populate[stores][populate]=*`)
+            .get(`${server}/api/categories?populate[stores][populate]=*&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setStores(data.data[0].attributes.stores.data);
@@ -52,12 +62,12 @@ const AllStores = () => {
 
                 } else {
                     setError("No data found for this slug.");
+                    console.log(error)
                 }
             })
             .catch((error) => setError(error));
-    }, [slug]);
+    }, [slug, error, i18n.language]);
 
-    console.log(storesCountry);
 
     return (
         <section>

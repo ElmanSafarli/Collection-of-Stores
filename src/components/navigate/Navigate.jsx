@@ -12,6 +12,7 @@ import FilterStores from '../FilterStores'
 import AllStores from '../AllStores'
 import CountryStore from '../CountryStore'
 import SubCategory from '../SubCategory'
+import ContactPage from '../ContactPage'
 
 
 const Navigate = () => {
@@ -24,6 +25,7 @@ const Navigate = () => {
             <Route path="/categories/:slug" element={<FilterStores />} />
             <Route path="/country/:slug" element={<CountryStore />} />
             <Route path="/subcategory/:slug" element={<SubCategory />} />
+            <Route path="/contact" element={<ContactPage />} />
         </Routes>
     );
 };
