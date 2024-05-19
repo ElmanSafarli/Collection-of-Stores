@@ -1044,6 +1044,47 @@ div.dropdown>div.list>div.item span {
   color: #191919;
 }
 
+/* Service group in detail page */
+.services {
+  padding: 4% 6%;
+}
+
+.services .title {
+  font-weight: 500;
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #191919;
+}
+
+.services-group {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.services-box {
+  max-width: 296px;
+  height: 89px;
+  background: #f1f1f1;
+  margin: auto;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.services-box h3 {
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  color: #191919;
+  margin: 10px;
+}
+
+
 /* All categories page */
 .all-categories-group {
   display: grid;
@@ -1187,6 +1228,11 @@ div.dropdown>div.list>div.item span {
   .contactUs-map {
     width: 410px;
     height: 350px;
+  }
+
+  /* Services data page */
+  .services-box h3 {
+    font-size: 18px;
   }
 }
 
@@ -1381,6 +1427,11 @@ div.dropdown>div.list>div.item span {
   }
 }
 
+@media (max-width: 700px) {
+  .services-group {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 500px) {
 
@@ -1543,6 +1594,10 @@ div.dropdown>div.list>div.item span {
 
   .product .price {
     font-size: 16px;
+  }
+
+  .services-box h3 {
+    font-size: 14px;
   }
 
   /* Filter All products */

@@ -979,6 +979,57 @@ export interface ApiProductProduct extends Schema.CollectionType {
   };
 }
 
+export interface ApiServiceService extends Schema.CollectionType {
+  collectionName: 'services';
+  info: {
+    singularName: 'service';
+    pluralName: 'services';
+    displayName: 'Service';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    Name: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    store: Attribute.Relation<
+      'api::service.service',
+      'manyToOne',
+      'api::store.store'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::service.service',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::service.service',
+      'oneToMany',
+      'api::service.service'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiStoreStore extends Schema.CollectionType {
   collectionName: 'stores';
   info: {
@@ -1142,6 +1193,11 @@ export interface ApiStoreStore extends Schema.CollectionType {
       'manyToOne',
       'api::subcaregory.subcaregory'
     >;
+    services: Attribute.Relation<
+      'api::store.store',
+      'oneToMany',
+      'api::service.service'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1250,6 +1306,7 @@ declare module '@strapi/types' {
       'api::category.category': ApiCategoryCategory;
       'api::country.country': ApiCountryCountry;
       'api::product.product': ApiProductProduct;
+      'api::service.service': ApiServiceService;
       'api::store.store': ApiStoreStore;
       'api::subcaregory.subcaregory': ApiSubcaregorySubcaregory;
     }

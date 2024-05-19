@@ -239,6 +239,12 @@
       "relation": "manyToOne",
       "target": "api::subcaregory.subcaregory",
       "inversedBy": "stores"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "store"
     }
   }
 }

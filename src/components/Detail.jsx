@@ -19,6 +19,7 @@ const StoreDetail = () => {
 
     const [store, setStore] = useState([]);
     const [country, setCountry] = useState([]);
+    const [services, setServices] = useState([]);
     const [products, setProducts] = useState([]);
     const [productImg, setProductImg] = useState([]);
     const [image1, setImage1] = useState('');
@@ -61,6 +62,7 @@ const StoreDetail = () => {
                 if (data && data.data && data.data.length > 0) {
                     const attributes = data.data[0].attributes;
                     setStore(attributes);
+                    setServices(attributes.services.data)
                     setCountry(attributes.countries.data[0].attributes.Name)
 
                 } else {
@@ -123,6 +125,8 @@ const StoreDetail = () => {
         fetchData();
     }, [slug, i18n.language]);
 
+    console.log(services)
+
     return (
         <section>
             <Navbar />
@@ -161,6 +165,20 @@ const StoreDetail = () => {
                         </div>
                         <div className="text">{store.Text1}</div>
                         <div className="text">{store.Text2}</div>
+                    </div>
+                    <div className="services">
+                        <h1 className='title'>Our Services</h1>
+                        <div className="services-group">
+                            {services && services.length > 0 ? (
+                                services.map(({ id, attributes }) => (
+                                    <div className="services-box" key={id}>
+                                        <h3>{attributes.Name}</h3>
+                                    </div>
+                                ))
+                            ) : (
+                                <p>No data available.</p>
+                            )}
+                        </div>
                     </div>
                     <div className="products">
                         <div className="title">{t('detailPage.item_2')}</div>
