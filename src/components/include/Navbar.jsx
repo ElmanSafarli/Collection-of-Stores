@@ -10,18 +10,26 @@ import LanguageSwitcher from './LanguageSwitcher';
 const Navbar = () => {
     const { slug } = useParams();
 
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
 
 
     const [error, setError] = useState(null);
     const [country, setCountry] = useState([]);
+    const [categories, setCategories] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
 
+    const getSelectedLanguage = () => {
+        const storedLanguage = localStorage.getItem('selectedLanguage');
+        return storedLanguage ? storedLanguage : 'en';
+    };
 
     const server = 'http://localhost:1337'
 
     useEffect(() => {
+        const locale = getSelectedLanguage();
+
         axios
-            .get(`${server}/api/countries?populate=*`)
+            .get(`${server}/api/countries?populate=*&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setCountry(data.data);
@@ -32,7 +40,19 @@ const Navbar = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, error]);
+
+        axios
+            .get(`${server}/api/categories/?populate=*&locale=${locale}`)
+            .then(({ data }) => {
+                if (data && data.data && data.data.length > 0) {
+                    setCategories(data.data);
+                } else {
+                    setError("No data found for this slug.");
+                    console.log(error)
+                }
+            })
+            .catch((error) => setError(error));
+    }, [slug, error, i18n.language]);
 
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -48,7 +68,24 @@ const Navbar = () => {
                 <div className="nav-items">
                     <ul>
                         <li><a href="/">{t('navBar.item_1')}</a></li>
-                        <li><a href="/categories">{t('navBar.item_2')}</a></li>
+                        <li>
+                            <div className="navDropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
+                                <a href="/categories">
+                                    {t('navBar.item_2')}
+                                </a>
+                                {isOpen && (
+                                    <div className="navDropdown-content">
+                                        {categories.map(({ id, attributes }) => (
+                                            <div className="" key={id}>
+                                                <Link to={`/categories/${attributes.Slug}`}>
+                                                    {attributes.Name}
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        </li>
                         <li><a href="/contact">{t('navBar.item_3')}</a></li>
                     </ul>
                 </div>

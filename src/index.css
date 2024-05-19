@@ -68,6 +68,10 @@ ul {
   font-weight: 400;
   font-size: 16px;
   color: #2e2f34;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-login a svg {
@@ -138,6 +142,32 @@ ul {
   outline: none;
   border: none;
 }
+
+.navDropdown {
+  display: inline-block;
+}
+
+.navDropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 8px;
+  top: 56px;
+  left: 50%;
+  width: 84%;
+  transform: translate(-50%, 0);
+  z-index: 20;
+}
+
+.navDropdown-content a {
+  height: 34px !important;
+}
+
+.navDropdown:hover .navDropdown-content {
+  display: block;
+}
+
 
 /* Sidebar */
 .sidebar {
