@@ -42,7 +42,7 @@ const Navbar = () => {
             .catch((error) => setError(error));
 
         axios
-            .get(`${server}/api/categories/?populate=*&locale=${locale}`)
+            .get(`${server}/api/services/?populate=*&locale=${locale}`)
             .then(({ data }) => {
                 if (data && data.data && data.data.length > 0) {
                     setCategories(data.data);
@@ -68,10 +68,11 @@ const Navbar = () => {
                 <div className="nav-items">
                     <ul>
                         <li><a href="/">{t('navBar.item_1')}</a></li>
+                        <li> <a href="/categories">{t('navBar.item_2')}</a></li>
                         <li>
                             <div className="navDropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
                                 <a href="/categories">
-                                    {t('navBar.item_2')}
+                                    {t('navBar.item_3')}
                                 </a>
                                 {isOpen && (
                                     <div className="navDropdown-content">
@@ -86,7 +87,6 @@ const Navbar = () => {
                                 )}
                             </div>
                         </li>
-                        <li><a href="/contact">{t('navBar.item_3')}</a></li>
                     </ul>
                 </div>
                 <div className="nav-top-r">
