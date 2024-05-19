@@ -245,6 +245,14 @@
       "relation": "oneToMany",
       "target": "api::service.service",
       "mappedBy": "store"
+    },
+    "Mail": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "email"
     }
   }
 }

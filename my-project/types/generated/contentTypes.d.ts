@@ -1198,6 +1198,12 @@ export interface ApiStoreStore extends Schema.CollectionType {
       'oneToMany',
       'api::service.service'
     >;
+    Mail: Attribute.Email &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
