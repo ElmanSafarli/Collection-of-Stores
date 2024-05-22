@@ -2,7 +2,8 @@
     "navBar": {
         "item_1": "Home",
         "item_2": "Categories",
-        "item_3": "Contact Us"
+        "item_3": "Contact Us",
+        "item_4": "Our services"
     },
     "navBarBottom": {
         "item_1": "Choose your country ",

@@ -72,7 +72,7 @@ const Navbar = () => {
                         <li>
                             <div className="navDropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
                                 <a href="/categories">
-                                    {t('navBar.item_3')}
+                                    {t('navBar.item_4')}
                                 </a>
                                 {isOpen && (
                                     <div className="navDropdown-content">
@@ -87,6 +87,7 @@ const Navbar = () => {
                                 )}
                             </div>
                         </li>
+                        <li> <a href="/categories">{t('navBar.item_3')}</a></li>
                     </ul>
                 </div>
                 <div className="nav-top-r">
