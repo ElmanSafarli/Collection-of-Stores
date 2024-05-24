@@ -7,15 +7,14 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import LanguageSwitcher from './LanguageSwitcher';
 
+
 const Navbar = () => {
     const { slug } = useParams();
 
     const { t, i18n } = useTranslation();
 
-
     const [error, setError] = useState(null);
     const [country, setCountry] = useState([]);
-    const [categories, setCategories] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
 
     const getSelectedLanguage = () => {
@@ -41,17 +40,7 @@ const Navbar = () => {
             })
             .catch((error) => setError(error));
 
-        axios
-            .get(`${server}/api/services/?populate=*&locale=${locale}`)
-            .then(({ data }) => {
-                if (data && data.data && data.data.length > 0) {
-                    setCategories(data.data);
-                } else {
-                    setError("No data found for this slug.");
-                    console.log(error)
-                }
-            })
-            .catch((error) => setError(error));
+
     }, [slug, error, i18n.language]);
 
 
@@ -71,18 +60,40 @@ const Navbar = () => {
                         <li> <a href="/categories">{t('navBar.item_2')}</a></li>
                         <li>
                             <div className="navDropdown" onMouseEnter={() => setIsOpen(true)} onMouseLeave={() => setIsOpen(false)}>
-                                <a href="/categories">
+                                <a href="/">
                                     {t('navBar.item_4')}
                                 </a>
                                 {isOpen && (
                                     <div className="navDropdown-content">
-                                        {categories.map(({ id, attributes }) => (
-                                            <div className="" key={id}>
-                                                <Link to={`/categories/${attributes.Slug}`}>
-                                                    {attributes.Name}
-                                                </Link>
-                                            </div>
-                                        ))}
+                                        <div className="servicesList">
+                                            <ul className="servicesList__ul">
+                                                <li>{t('featuresAndServices.paymentsSystem')}</li>
+                                                <li>{t('featuresAndServices.centersManagementSystem')}</li>
+                                                <li>{t('featuresAndServices.buildingManagementSystem')}</li>
+                                                <li>{t('featuresAndServices.appointmentsSystem')}</li>
+                                                <li>{t('featuresAndServices.accountingCloudSystems')}</li>
+                                                <li>{t('featuresAndServices.posCloudSystems')}</li>
+                                                <li>{t('featuresAndServices.calendar')}</li>
+                                                <li>{t('featuresAndServices.remindersSystem')}</li>
+                                                <li>{t('featuresAndServices.tasksManagementSystem')}</li>
+                                                <li>{t('featuresAndServices.softwaresCloud')}</li>
+                                                <li>{t('featuresAndServices.toolsCloud')}</li>
+                                                <li>{t('featuresAndServices.socialMediaManagement')}</li>
+                                                <li>{t('featuresAndServices.emailsManagement')}</li>
+                                                <li>{t('featuresAndServices.ocrSystems')}</li>
+                                                <li>{t('featuresAndServices.documentsConverter')}</li>
+                                                <li>{t('featuresAndServices.onlineStoreSystems')}</li>
+                                                <li>{t('featuresAndServices.sponsorsServices')}</li>
+                                                <li>{t('featuresAndServices.communicationsSystems')}</li>
+                                                <li>{t('featuresAndServices.paymentsByPhoneSystem')}</li>
+                                                <li>{t('featuresAndServices.govermentIndex')}</li>
+                                                <li>{t('featuresAndServices.countriesInfo')}</li>
+                                                <li>{t('featuresAndServices.phoneIndex')}</li>
+                                                <li>{t('featuresAndServices.virtualExpoAndExhibition')}</li>
+                                                <li>{t('featuresAndServices.expensesSystem')}</li>
+                                                <li>{t('featuresAndServices.personalExpensesSystem')}</li>
+                                            </ul>
+                                        </div>
                                     </div>
                                 )}
                             </div>

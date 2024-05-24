@@ -52,5 +52,32 @@
     "detailPage": {
         "item_1": "Description",
         "item_2": "Related Products"
+    },
+    "featuresAndServices": {
+        "paymentsSystem": "Payments system",
+        "centersManagementSystem": "Centers management system",
+        "buildingManagementSystem": "Building Management System",
+        "appointmentsSystem": "Appointments System",
+        "accountingCloudSystems": "Accounting cloud systems",
+        "posCloudSystems": "POS Cloud Systems",
+        "calendar": "Calendar",
+        "remindersSystem": "Reminders system",
+        "tms": "TMS (Tasks Management System)",
+        "softwaresCloud": "Softwares Cloud",
+        "toolsCloud": "Tools Cloud",
+        "socialMediaManagement": "Social Media Management",
+        "emailsManagement": "Emails Management",
+        "ocrSystems": "OCR systems",
+        "documentsConverter": "Documents Converter",
+        "onlineStoreSystems": "Online Store Systems",
+        "sponsorsServices": "Sponsors Services",
+        "communicationsSystems": "Communications systems",
+        "paymentsByPhoneSystem": "Payments by phone System",
+        "governmentIndex": "Goverment index",
+        "countriesInfo": "Countries info",
+        "phoneIndex": "Phone index",
+        "virtualExpoAndExhibition": "Virtual Expo and Exhibition",
+        "expensesSystem": "Expenses System",
+        "personalExpensesSystem": "Personal Expenses System"
     }
 }

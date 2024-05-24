@@ -5,6 +5,8 @@ import { useTranslation } from 'react-i18next';
 import health from '../../assets/Health and Wellness.jpg'
 import clothes from '../../assets/clothes.jpg'
 import food from '../../assets/food.jpg'
+import fashion from '../../assets/fashion.jpg'
+import electronic from '../../assets/electronics.png'
 
 
 const Categories = () => {
@@ -38,7 +40,7 @@ const Categories = () => {
                             </a>
                         </div>
                         <div className="categories-box">
-                            <img src="" alt="category" />
+                            <img src={electronic} alt="category" />
                             <a href="categories/electronics">
                                 {t('homeCategories.item_5')}
                                 <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,7 +49,7 @@ const Categories = () => {
                             </a>
                         </div>
                         <div className="categories-box">
-                            <img src="" alt="category" />
+                            <img src={fashion} alt="category" />
                             <a href="categories/fashion">
                                 {t('homeCategories.item_6')}
                                 <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">

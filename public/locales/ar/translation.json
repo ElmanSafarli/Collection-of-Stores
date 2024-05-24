@@ -52,5 +52,32 @@
     "detailPage": {
         "item_1": "وصف",
         "item_2": "منتجات ذات صله"
+    },
+    "featuresAndServices": {
+        "paymentsSystem": "نظام الدفع",
+        "centersManagementSystem": "نظام إدارة المراكز",
+        "buildingManagementSystem": "نظام إدارة المباني",
+        "appointmentsSystem": "نظام المواعيد",
+        "accountingCloudSystems": "أنظمة الحسابات السحابية",
+        "posCloudSystems": "أنظمة نقاط البيع السحابية",
+        "calendar": "التقويم",
+        "remindersSystem": "نظام التذكير",
+        "tms": "نظام إدارة المهام (TMS)",
+        "softwaresCloud": "البرامج السحابية",
+        "toolsCloud": "أدوات السحابة",
+        "socialMediaManagement": "إدارة وسائل التواصل الاجتماعي",
+        "emailsManagement": "إدارة البريد الإلكتروني",
+        "ocrSystems": "أنظمة OCR",
+        "documentsConverter": "محول الوثائق",
+        "onlineStoreSystems": "أنظمة المتجر الإلكتروني",
+        "sponsorsServices": "خدمات الرعاة",
+        "communicationsSystems": "أنظمة الاتصالات",
+        "paymentsByPhoneSystem": "نظام الدفع عبر الهاتف",
+        "governmentIndex": "الفهرس الحكومي",
+        "countriesInfo": "معلومات الدول",
+        "phoneIndex": "فهرس الهاتف",
+        "virtualExpoAndExhibition": "المعرض الافتراضي والمعرض",
+        "expensesSystem": "نظام المصاريف",
+        "personalExpensesSystem": "نظام المصروفات الشخصية"
     }
 }
