@@ -7,6 +7,8 @@ import axios from "axios";
 import Navbar from './include/Navbar';
 import Footer from './include/Footer';
 
+import { API } from '../constant';
+
 const StoreDetail = () => {
 
     const { slug } = useParams();
@@ -15,7 +17,7 @@ const StoreDetail = () => {
 
     const [error, setError] = useState(null);
 
-    const server = 'http://localhost:1337';
+    const server = API;
 
     const [store, setStore] = useState([]);
     const [country, setCountry] = useState([]);
@@ -123,7 +125,7 @@ const StoreDetail = () => {
 
     useEffect(() => {
         fetchData();
-    }, [slug, i18n.language]);
+    }, [slug, i18n.language, server]);
 
     console.log(services)
 

@@ -14,6 +14,8 @@ import link from '../assets/external-link.png'
 import Navbar from './include/Navbar';
 import Footer from './include/Footer';
 
+import { API } from '../constant';
+
 const FilterStores = () => {
 
     const { slug } = useParams();
@@ -26,7 +28,7 @@ const FilterStores = () => {
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);
 
-    const server = 'http://localhost:1337'
+    const server = API
 
     const getSelectedLanguage = () => {
         const storedLanguage = localStorage.getItem('selectedLanguage');
@@ -51,7 +53,7 @@ const FilterStores = () => {
             .catch((error) => setError(error));
 
 
-    }, [slug, error, i18n.language]);
+    }, [slug, error, i18n.language, server]);
 
     const truncateText = (text, limit) => {
         if (text.length > limit) {

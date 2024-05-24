@@ -7,6 +7,7 @@ import { Link } from "react-router-dom"
 import axios from "axios";
 import LanguageSwitcher from './LanguageSwitcher';
 
+import { API } from '../../constant';
 
 const Navbar = () => {
     const { slug } = useParams();
@@ -22,7 +23,7 @@ const Navbar = () => {
         return storedLanguage ? storedLanguage : 'en';
     };
 
-    const server = 'http://localhost:1337'
+    const server = API
 
     useEffect(() => {
         const locale = getSelectedLanguage();
@@ -41,7 +42,7 @@ const Navbar = () => {
             .catch((error) => setError(error));
 
 
-    }, [slug, error, i18n.language]);
+    }, [slug, error, i18n.language, server]);
 
 
     const [isFilterOpen, setIsFilterOpen] = useState(false);

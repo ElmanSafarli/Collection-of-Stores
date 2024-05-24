@@ -13,6 +13,8 @@ import link from '../assets/external-link.png'
 import Navbar from './include/Navbar';
 import Footer from './include/Footer';
 
+import { API } from '../constant';
+
 const FilterCountryStores = () => {
 
     const { slug } = useParams();
@@ -24,7 +26,7 @@ const FilterCountryStores = () => {
     const [storesImg, setStoresImg] = useState([]);
     const [storesCountry, setStoresCountry] = useState([]);
 
-    const server = 'http://localhost:1337'
+    const server = API
 
     const getSelectedLanguage = () => {
         const storedLanguage = localStorage.getItem('selectedLanguage');
@@ -59,7 +61,7 @@ const FilterCountryStores = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, error, i18n.language]);
+    }, [slug, error, i18n.language, server]);
 
     return (
         <section>

@@ -6,9 +6,11 @@ import axios from "axios";
 // Images
 import link from '../../assets/external-link.png'
 
+import { API } from '../../constant';
+
 const FeaturedStores = () => {
 
-    const server = 'http://localhost:1337';
+    const server = API;
 
     const { t, i18n } = useTranslation();
 
@@ -35,7 +37,7 @@ const FeaturedStores = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [error, i18n.language]);
+    }, [error, i18n.language, server]);
 
     const truncateText = (text, limit) => {
         if (text.length > limit) {

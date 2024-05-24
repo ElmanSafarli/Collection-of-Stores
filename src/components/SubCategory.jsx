@@ -10,13 +10,15 @@ import Footer from './include/Footer';
 // Images
 import link from '../assets/external-link.png'
 
+import { API } from '../constant';
+
 const FeaturedStores = () => {
 
     const { slug } = useParams();
 
     const { t, i18n } = useTranslation();
 
-    const server = 'http://localhost:1337';
+    const server = API;
 
     const [error, setError] = useState(null);
     const [stores, setStores] = useState([]);
@@ -41,7 +43,7 @@ const FeaturedStores = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, error, i18n.language]);
+    }, [slug, error, i18n.language, server]);
 
     const truncateText = (text, limit) => {
         if (text.length > limit) {

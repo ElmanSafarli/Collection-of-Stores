@@ -10,6 +10,8 @@ import { Link } from "react-router-dom"
 import Navbar from './include/Navbar';
 import Footer from './include/Footer';
 
+import { API } from '../constant';
+
 const AllCategories = () => {
 
     const { slug } = useParams();
@@ -21,7 +23,7 @@ const AllCategories = () => {
     const [categories, setCategories] = useState([]);
     const [categoriesImg, setCategoriesImg] = useState([]);
 
-    const server = 'http://localhost:1337'
+    const server = API
 
     const getSelectedLanguage = () => {
         const storedLanguage = localStorage.getItem('selectedLanguage');
@@ -49,7 +51,7 @@ const AllCategories = () => {
                 }
             })
             .catch((error) => setError(error));
-    }, [slug, i18n.language, error]);
+    }, [slug, i18n.language, error, server]);
 
     return (
         <section>
